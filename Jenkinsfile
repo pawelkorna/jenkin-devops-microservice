@@ -58,19 +58,23 @@ pipeline {
 			steps {
 				//"docker build -t pawelkornasiewicz/currency-exchange-devops:$env.BUILD_TAG ."
 				script {
-				dockerImage = docker.build("pawelkornasiewicz/currency-exchange-devops:${env.BUILD_TAG}")
+					dockerImage = docker.build("pawelkornasiewicz/currency-exchange-devops:${env.BUILD_TAG}")
 				}
 			}
 			
 		}
 		stage('Pushing image to the dockerHub') {
-			script {
-				docker.withRegistry('', 'dockerhub') {
+			steps {
+				script {
+					docker.withRegistry('', 'dockerhub') {
 					dockerImage.push();
 					dockerImage.push('latest');
-				}
-				
+					}
+	
+				}	
+
 			}
+			
 		}
 	} 
 	post {
