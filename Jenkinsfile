@@ -36,6 +36,9 @@ pipeline {
 		failure {
 		echo ' I run when the build fails'
 		}
+		changed {
+		echo 'i run when there was change from failed to success or otherwise'		
+		}
 	}
 
 }
