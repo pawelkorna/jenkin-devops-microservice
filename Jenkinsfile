@@ -27,15 +27,16 @@ pipeline {
 		}
 	} 
 	post {
-		echo 'Im awesome. I run always'
-	}
-	success {
+		always {
+			echo 'Im awesome. I run always'
+		}
+		success {
 		echo ' I run when the build success'
-	}
-	failure {
+		}
+		failure {
 		echo ' I run when the build fails'
+		}
 	}
-
 
 }
 
